@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Showcase</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #111827;
+      --surface-2: #1f2937;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #8b5cf6;
+      --accent-2: #38bdf8;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(15, 23, 42, .35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, rgba(59, 130, 246, .15), transparent 25%),
+                  linear-gradient(180deg, #020617 0%, #0b1124 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-wrap {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-copy small {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: .45rem 1rem;
+      background: rgba(139, 92, 246, .15);
+      color: var(--accent);
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      line-height: 1.02;
+    }
+
+    .hero-copy p {
+      max-width: 42rem;
+      color: var(--muted);
+      margin: 0 0 1.8rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      padding: 1rem 1.8rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 20px 50px rgba(59, 130, 246, .25);
+    }
+
+    .hero-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(59, 130, 246, .18), transparent 60%);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      animation: float 4s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, .95);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, .2);
+      min-height: 280px;
+    }
+
+    .card h2 {
+      margin: 0 0 .8rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 3rem;
+    }
+
+    .feature {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(59, 130, 246, .18);
+      color: var(--accent-2);
+      font-size: 1.4rem;
+    }
+
+    .feature-copy h3 {
+      margin: 0 0 .4rem;
+      font-size: 1.05rem;
+    }
+
+    .feature-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .demo-panel {
+      display: grid;
+      gap: 1rem;
+      padding: 2rem;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(59, 130, 246, .08), rgba(15, 23, 42, .95));
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .demo-panel h2 {
+      margin: 0 0 .75rem;
+    }
+
+    .demo-panel img {
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    footer {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      color: var(--muted);
+      text-align: center;
+      font-size: .95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <small>Discord Showcase</small>
+        <h1>Present your server, bots, and community highlights in one premium page.</h1>
+        <p>Use a modern showcase layout to share feature cards, live previews, and content that feels polished and ready for any audience.</p>
+        <a class="cta-btn" href="#showcase">Explore the showcase</a>
+      </div>
+      <div class="hero-image">
+        <img src="75-removebg-preview.png" alt="Showcase preview image">
+      </div>
+    </section>
+
+    <section id="showcase" class="cards">
+      <article class="card">
+        <h2>Server Highlights</h2>
+        <p>Show off top channels, events, and announcements with bold section cards designed to capture visitor attention.</p>
+      </article>
+      <article class="card">
+        <h2>Custom Bots</h2>
+        <p>Feature bot commands, automation, and user-friendly helpers in a clean card format with visual emphasis on core strengths.</p>
+      </article>
+      <article class="card">
+        <h2>Community Growth</h2>
+        <p>Display member spotlights, activity stats, and success stories to make your Discord project feel thriving and alive.</p>
+      </article>
+    </section>
+
+    <section class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-copy">
+          <h3>Fast first impression</h3>
+          <p>Give visitors a strong landing moment with a large hero, clear headline, and polished visuals.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <div class="feature-copy">
+          <h3>Responsive showcase</h3>
+          <p>Looks great on desktop, tablet, and mobile so your community can be discovered anywhere.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛠️</div>
+        <div class="feature-copy">
+          <h3>Easy to customize</h3>
+          <p>Swap in your own text, images, and links to tailor the page to your server or project.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌟</div>
+        <div class="feature-copy">
+          <h3>Professional polish</h3>
+          <p>Gradient backgrounds, glass-style cards, and subtle shadows make the page feel premium.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-panel">
+      <h2>Live preview</h2>
+      <p>Here’s the current showcase layout with your image and a modern visual style. Use the code as a base to build a polished landing experience.</p>
+      <img src="jsc2006e39972.webp" alt="Additional preview image">
+    </section>
+
+    <footer>
+      Crafted as a Discord showcase demo — update the text and image sections to match your brand.
+    </footer>
+  </div>
+</body>
